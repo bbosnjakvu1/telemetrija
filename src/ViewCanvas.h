@@ -25,9 +25,8 @@ protected:
     LineGraph grafik;
 
     gui::Point _translate;
-    double _scaleX = 1.0;
-    double _scaleY = 1.0;
-    cnt::PushBackVector<td::Point<td::INT4>> _kernelPoints;
+    //double _scaleX = 1.0;
+    //double _scaleY = 1.0;
 protected:
     
     /*bool onZoom(const gui::InputDevice& inputDevice) override
@@ -50,15 +49,15 @@ protected:
     void onDraw(const gui::Rect& rect) override
     {
         gui::Transformation tr;
-        tr.translate(_translate.x, _translate.y);
-        tr.scale(_scaleX, _scaleY);
+        tr.translate(_translate.x, 1); //scroll samo ljevo desno
+        //tr.scale(_scaleX, _scaleY);
         tr.appendToContext();
         grafik.Draw();
     }
 
 public:
     ViewCanvas()
-    : gui::Canvas({gui::InputDevice::Event::Zoom}) //{gui::InputDevice::Event::Zoom}  scrolling and zooming without scrollbars
+    : gui::Canvas() //{gui::InputDevice::Event::Zoom}  scrolling and zooming without scrollbars
     {
         setClipsToBounds();
         registerForScrollEvents();

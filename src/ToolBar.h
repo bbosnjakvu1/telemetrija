@@ -5,26 +5,37 @@
 #pragma once
 #include <gui/ToolBar.h>
 #include <gui/Image.h>
-//#include "SymbolsPopover.h"
 
 class ToolBar : public gui::ToolBar
 {
 protected:
-    gui::Image _img1;
-    gui::Image _img2;
-    gui::Image _imgIncrease;
-    gui::Image _imgDecrease;
-    gui::Image _img3;
-    //SymbolsPopover _symbolsPopover;
+    gui::Image _imgAddView;
+    gui::Image _imgMoveViewLeft;
+    gui::Image _imgMoveViewRight;
+    gui::Image _imgRemoveView;
+    gui::Image _imgRemoveAllViews;
 public:
     ToolBar()
-    : gui::ToolBar("myToolBar", 8, 7)
-    , _img1(":img1")
-    , _img2(":img2")
-    , _imgIncrease(":incSize")
-    , _imgDecrease(":decSize")
-    , _img3(":img3")
+        : gui::ToolBar("myToolBar", 7)
+        , _imgAddView(":add")
+        , _imgMoveViewLeft(":mvLeft")
+        , _imgMoveViewRight(":mvRight")
+        , _imgRemoveView(":rem")
+        , _imgRemoveAllViews(":remAll")
     {
+        addItem(tr("addView"), &_imgAddView, tr("addViewTT"), 10, 0, 0, 10);
+
+        addSpaceItem();
+
+        addItem(tr("mvvLeft"), &_imgMoveViewLeft, tr("mvvLeftTT"), 10, 0, 0, 20);
+
+        addItem(tr("mvvRight"), &_imgMoveViewRight, tr("mvvRightTT"), 10, 0, 0, 30);
+
+        addSpaceItem();
+
+        addItem(tr("remView"), &_imgRemoveView, tr("remViewTT"), 10, 0, 0, 40);
+
+        addItem(tr("remAllViews"), &_imgRemoveAllViews, tr("remAllViewsTT"), 10, 0, 0, 50);
     }
-    
+
 };

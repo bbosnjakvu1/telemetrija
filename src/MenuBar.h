@@ -14,8 +14,6 @@ protected:
     void populateSubAppMenu()
     {
         auto& items = subApp.getItems();
-        //items[0].initAsActionItem(tr("Properties"), 10, "p");
-        //tems[1] is separator
         items[0].initAsActionItem(tr("Update"), 10, "u"); //id 0 is used to terminate app
         items[1].initAsQuitAppActionItem(tr("Quit"), "q"); //id 0 is used to terminate app
     }

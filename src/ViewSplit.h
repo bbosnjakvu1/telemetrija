@@ -14,13 +14,10 @@ class ViewSplit : public gui::View
     gui::SplitterLayout _splitter;
     ViewCanvas can;
     ViewGrid grid;
-    std::function<void()>* _pUpdateMenuAndTB;
-    std::function<void(float, bool, td::ColorID, td::ColorID)> _fnSetVisualEffects;
 
 public:
     ViewSplit():_splitter(gui::SplitterLayout::Orientation::Vertical, gui::SplitterLayout::AuxiliaryCell::Second)
     {
-        setMargins(0, 0, 0, 0);
         _splitter.setContent(can, grid);
         setLayout(&_splitter);
     }
