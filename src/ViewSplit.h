@@ -1,24 +1,23 @@
-//
-//  Created by Izudin Dzafic on 28/07/2020.
-//  Copyright © 2020 IDz. All rights reserved.
-//
 #pragma once
 #include <gui/SplitterLayout.h>
 #include <gui/View.h>
 
-#include "ViewCanvas.h"
+#include "ViewScroll.h"
 #include "ViewGrid.h"
 
 class ViewSplit : public gui::View
 {
     gui::SplitterLayout _splitter;
-    ViewCanvas can;
+    ViewScroll canvas;
     ViewGrid grid;
 
 public:
     ViewSplit():_splitter(gui::SplitterLayout::Orientation::Vertical, gui::SplitterLayout::AuxiliaryCell::Second)
     {
-        _splitter.setContent(can, grid);
+        _splitter.setContent(canvas, grid);
         setLayout(&_splitter);
+        grid.setHeight(500);
+        //can.setFixedWidth(1920);
+        //grid.setWidth(1920);
     }
 };

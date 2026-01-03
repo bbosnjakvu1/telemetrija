@@ -1,7 +1,3 @@
-//
-//  Created by Izudin Dzafic on 28/07/2020.
-//  Copyright © 2020 IDz. All rights reserved.
-//
 #pragma once
 #include <gui/View.h>
 #include <gui/Label.h>
@@ -12,8 +8,6 @@
 #include <gui/Slider.h>
 #include <gui/ComboBox.h>
 #include <gui/Button.h>
-#include <gui/DateEdit.h>
-#include <gui/TimeEdit.h>
 
 #include <gui/HorizontalLayout.h>
 #include <gui/VerticalLayout.h>
@@ -41,7 +35,6 @@ protected:
 
     gui::TextEdit textEdit;
     gui::TextEdit textEdit1;
-    //gui::GridLayout gl;
 public:
     ViewGrid()
     : _lbl("First lbl:")
@@ -51,13 +44,11 @@ public:
     , layoutH(3)
     , controlls(2)
     , red1(4),  red2(2)
-    //, gl(2,6)
     {
         _lineEdit.setToolTip("Ovo je tooltip");
         _lineEdit2.setToolTip("Ovo je drugi tooltip....");
         textEdit.setToolTip("Ovo je text edit za log");
         textEdit.setAsReadOnly();
-
 
         red1.append(_lbl);
         red1.append(_lineEdit);
@@ -72,23 +63,7 @@ public:
         layoutH.appendSpacer();
         layoutH.append(textEdit);
 
-        //::GridComposer gc(gl);
-        //gc.appendRow(_lbl);gc.appendCol(_lineEdit);gc.appendCol(_lbl2);gc.appendEmptyCols(1);gc.appendCol(_lineEdit2);
-        //gc.appendRow(_lblKol);gc.appendCol(_kol);
-
-
-        /*gl.insert(0,0, _lbl);
-        gl.insert(0,1, _lineEdit);
-        gl.insert(0,2, _lbl2);
-        gl.insert(0,3, _lineEdit2);
-        gl.insertSpacer(0,4,2,1);
-        gl.insert(0,5,textEdit,-1);
-        gl.insert(1,0, _lblKol);
-        gl.insert(1,1, _kol);
-        gl.insert(1,5,textEdit1,-1);
-        */
         setLayout(&layoutH);
-
     }
     
     bool onBeginEdit(gui::LineEdit* pCtrl) override

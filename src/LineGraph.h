@@ -58,7 +58,8 @@ class LineGraph{
         1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000
     };
 
-
+    td::String xOsa="x";
+    td::String yOsa="y";
 public:
     LineGraph(double thickness=2.0)
     {
@@ -74,5 +75,17 @@ public:
             graf[i]->drawWire(color);
         }
     }
+
+    int getXnum(){return x.size();}
+    int getYnum(){return y.size();}
+
+    double getXmax(){return 600;}
+    double getYmax(){return 2000;}
+
+    double getXmin(){return 30;}
+    double getYmin(){return 0;}
+
+    td::String getX(){return xOsa;}
+    td::String getY(){return yOsa;}
 
 };

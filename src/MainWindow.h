@@ -1,7 +1,3 @@
-//
-//  Created by Izudin Dzafic on 28/07/2020.
-//  Copyright © 2020 IDz. All rights reserved.
-//
 #pragma once
 #include <gui/Window.h>
 #include <gui/ActionItem.h>
@@ -23,8 +19,9 @@ protected:
     int viewPos = 0;
 public:
     MainWindow()
-    : gui::Window(gui::Geometry(0, 0, 500, 600)) //druga dva broj su velicina(skontat kako forsiraf fullscreen)
+        : gui::Window(gui::Size {800, 800}) //druga dva broj su velicina(skontat kako forsiraf fullscreen)
     {
+        //this->setSize()
         //setResizable(false);
         setTitle("Telemetrija");
         menuBar.setAsMain(this);
