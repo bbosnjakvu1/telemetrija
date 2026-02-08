@@ -8,7 +8,7 @@ protected:
     
     gui::Window* createInitialWindow() override
     {
-        setInitialFrameSize(gui::Window::FrameSize::Maximized);
+        //setInitialFrameSize(gui::Window::FrameSize::Maximized);
         return new MainWindow();
     }
     

@@ -17,6 +17,8 @@
 #include <gui/GridLayout.h>
 #include <gui/GridComposer.h>
 
+#include "Data.h"
+
 class ViewGrid : public gui::View
 {
 private:
@@ -35,25 +37,47 @@ protected:
 
     gui::TextEdit textEdit;
     gui::TextEdit textEdit1;
+
+    gui::ComboBox cbxvalue;
+    gui::ComboBox cbyvalue;
+
+    std::function<void(int, int)> callChangeSettings;
+
+    void refresh()
+    {
+        int xid=0, yid=0;
+        callChangeSettings(xid, yid);
+    }
+
 public:
-    ViewGrid()
-    : _lbl("First lbl:")
-    , _lbl2("Second lbl:")
+    ViewGrid(std::function<void(int, int)> CallChangeSettings)
+    : _lbl("X osa:")
+    , _lbl2("Y osa:")
     , _lblKol("Kolicina:")
     , _kol(td::decimal3, gui::LineEdit::Messages::Send)
     , layoutH(3)
     , controlls(2)
     , red1(4),  red2(2)
+    , callChangeSettings(CallChangeSettings)
     {
+        auto types=Data::instance().getTypes();
+        for(int i=0; i<types.size(); i++){
+            cbxvalue.addItem(types[i]);
+            cbyvalue.addItem(types[i]);
+
+        }
+        cbxvalue.selectIndex(0);
+        cbyvalue.selectIndex(1);
+
         _lineEdit.setToolTip("Ovo je tooltip");
         _lineEdit2.setToolTip("Ovo je drugi tooltip....");
         textEdit.setToolTip("Ovo je text edit za log");
         textEdit.setAsReadOnly();
 
         red1.append(_lbl);
-        red1.append(_lineEdit);
+        red1.append(cbxvalue);
         red1.append(_lbl2);
-        red1.append(_lineEdit2);
+        red1.append(cbyvalue);
         red2.append(_lblKol);
         red2.append(_kol);
 
@@ -68,8 +92,8 @@ public:
     
     bool onBeginEdit(gui::LineEdit* pCtrl) override
     {
-        textEdit.appendString("Begin edit!");
-        mu::dbgLog("Begin Edit");
+        /*textEdit.appendString("Begin edit!");
+        mu::dbgLog("Begin Edit");*/
         return true;
     }
     
@@ -129,12 +153,9 @@ public:
     
     bool onChangedSelection(gui::ComboBox* pCB) override
     {
-        /*if (pCB == &_comboBox)
-        {
-            td::String strSel = pCB->getSelectedText();
-            _textEdit.appendString(strSel);
-            return true;
-        }*/
+        if (pCB == &cbxvalue || pCB==&cbyvalue)
+
+        callChangeSettings(cbxvalue.getSelectedIndex(), cbyvalue.getSelectedIndex());
         return false;
     }
     

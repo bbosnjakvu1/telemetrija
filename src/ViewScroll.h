@@ -11,7 +11,7 @@ protected:
 
 public:
     ViewScroll()
-    : gui::ViewScroller(gui::ViewScroller::Type::ScrollerAlwaysVisible, gui::ViewScroller::Type::NoScroll) //{NoScroll = 0, ScrollerAlwaysVisible, ScrollAndAutoHide, ScrollExternal};
+        : gui::ViewScroller(gui::ViewScroller::Type::ScrollerAlwaysVisible, gui::ViewScroller::Type::NoScroll)
     {
         setContentView(&canvas);
     }
@@ -20,4 +20,7 @@ public:
     {
         return canvas;
     }
+
+    ViewCanvas& getCanvas(){return canvas;}
+
 };
